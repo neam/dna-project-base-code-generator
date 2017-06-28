@@ -35,14 +35,16 @@ class ItemTypeRelatedTestMethodsClasses extends \DbAgnosticCodeGuy
 
         foreach (ItemTypes::all() as $itemTypePhpName => $dbTable) {
 
+            $destinationPath = \Paths::dna(
+                ) . DIRECTORY_SEPARATOR . 'tests/codeception/_helpers/Step/Unit_db_dependent/crud/base/' . $itemTypePhpName . 'RelatedTestMethods.php';
+
             ob_start();
             include \Paths::dna(
-                ) . DIRECTORY_SEPARATOR . 'generators/dna-project-base-code-generator-templates/test_crud/codeception/item-type-related-test-methods-class.php';
+                ) . DIRECTORY_SEPARATOR . 'generators/dna-project-base-code-generator-templates/test_crud/codeception/item-type-related-test-methods-base-class.php';
             $contents = ob_get_clean();
 
             file_put_contents(
-                \Paths::dna(
-                ) . DIRECTORY_SEPARATOR . 'tests/codeception/_helpers/Step/Unit_db_dependent/crud/' . $itemTypePhpName . 'RelatedTestMethods.php',
+                $destinationPath,
                 $contents
             );
 
