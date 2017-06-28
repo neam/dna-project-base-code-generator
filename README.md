@@ -1,4 +1,4 @@
-DNA Code Generator
+DNA Project Base Code Generator
 ====================
 
 > Please note: This project is in early development stages
@@ -212,5 +212,5 @@ Updating code-generation logic is done by adding/tweaking/enhancing providers an
 Resources
 ---------
 
-- [Project Source-Code](https://github.com/neam/dna-code-generator)
+- [Project Source-Code](https://github.com/neam/dna-project-base-code-generator)
 - [Website](http://neamlabs.com/dna-project-base/)
