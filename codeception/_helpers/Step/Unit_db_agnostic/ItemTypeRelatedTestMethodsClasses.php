@@ -55,7 +55,7 @@ class ItemTypeRelatedTestMethodsClasses extends \DbAgnosticCodeGuy
      */
     public function iShouldArriveHereWithoutErrors()
     {
-        throw new \Codeception\Exception\Incomplete("Step `I should arrive here without errors` is not defined");
+        codecept_debug('All good!');
     }
 
 }
