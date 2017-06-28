@@ -2,7 +2,7 @@
 
 namespace Step\Unit_db_agnostic;
 
-class ItemRelatedTestMethodClasses extends \DbAgnosticCodeGuy
+class ItemTypeRelatedTestMethodsClasses extends \DbAgnosticCodeGuy
 {
 
     /**
@@ -10,9 +10,8 @@ class ItemRelatedTestMethodClasses extends \DbAgnosticCodeGuy
      */
     public function iGenerateItemRelatedTestMethodClassesForAllItemTypes()
     {
-        throw new \Codeception\Exception\Incomplete(
-            "TODO"
-        );
+
+
     }
 
     /**
