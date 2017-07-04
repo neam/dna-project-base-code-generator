@@ -1,6 +1,8 @@
 DNA Project Base Code Generator
 ====================
 
+Generates code using simple and fast code generators, orchestrated/run by Codeception.
+
 > Please note: This project is in early development stages
 
 Code generator for generating various parts of a web project using the [DNA project base](http://neamlabs.com/dna-project-base/).
