@@ -33,7 +33,7 @@ class DnaRestApiBatchController extends DnaBatchController
 
         $this->modelItemTypes = [];
         foreach ($cruds AS $modelClass => $table) {
-            $modelPath = DNA_PROJECT_PATH . "/dna/models/$modelClass.php";
+            $modelPath = DNA_PROJECT_PATH . "/dna/legacy-yii-models/$modelClass.php";
             if (!is_readable($modelPath)) {
                 echo "No model exists at $modelPath\n";
                 continue;
