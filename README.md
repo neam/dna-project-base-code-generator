@@ -7,6 +7,11 @@ Generates code using simple and fast code generators, orchestrated/run by Codece
 
 Code generator for generating various parts of a web project using the [DNA project base](http://neamlabs.com/dna-project-base/).
 
+    cd tools/dna-project-base-code-generator
+    . bashrc/before-test.sh
+
+Previous readme contents to adapt to new generator api:
+
 Featured Generators
 ------------------
 
@@ -14,9 +19,8 @@ All of the below are generated into the project's 12-factor app and deployed sid
 
 ### Content Model
 
-* Yii 1 models based on your database schema
-* Yii 1 behavior/traits/rules/relations configuration, as well as labels, hints etc based on the metadata defined in a Google Spreadsheet or your account at [http://codegeneration.io]()
-* Yii 2 models based on your database schema
+* Legacy Yii 1 models based on your database schema
+* Legacy Yii 1 behavior/traits/rules/relations configuration, as well as labels, hints etc based on the metadata defined in a Google Spreadsheet or your account at [http://codegeneration.io]()
 
 ### User Interfaces
 
@@ -120,6 +124,10 @@ Updating the pristine generated models and copying base and metadata models to d
     mkdir -p dna/legacy-yii-models/metadata/
     tools/code-generator/yii dna-model-batch
     tools/code-generator/vendor/neam/gii2-dna-project-base-model-generators/yii1_model/copy-models.sh dna/legacy-yii-models
+
+#### Generating test-related model helper methods
+
+    codecept run unit_db_agnostic item-type-related-test-methods-classes.feature --debug --fail-fast --group coverage:full
 
 #### Generating RESTful API
 
