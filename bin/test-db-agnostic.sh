@@ -8,6 +8,11 @@ cd $script_path/..
 # fail on any error
 set -o errexit
 
+if [[ "$PROJECT_BASEPATH" == "" ]]; then
+  echo "Test shell is not properly bootstrapped for tests. Please run 'source bashrc/before-test.sh' then try again"
+  exit 1
+fi
+
 cd $PROJECT_BASEPATH
 source vendor/neam/php-app-config/shell-export.sh
 cd -

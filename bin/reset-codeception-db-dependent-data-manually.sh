@@ -22,10 +22,10 @@ cd $PROJECT_BASEPATH
 source vendor/neam/php-app-config/shell-export.sh
 cd -
 
-echo "* Resetting codeception db-dependent data (codeception/_data/dump-db-dependent.$DATA.sql) manually for data profile $DATA";
+echo "* Resetting codeception db-dependent data (codeception/_tmp/dump-db-dependent.$DATA.sql) manually for data profile $DATA";
 
-if [ -f $PROJECT_BASEPATH/dna/tests/codeception/_data/dump-db-dependent.$DATA.sql ]; then
-    mysql --no-auto-rehash --host=$DATABASE_HOST --port=$DATABASE_PORT --user=$DATABASE_USER --password=$DATABASE_PASSWORD $DATABASE_NAME < $PROJECT_BASEPATH/dna/tests/codeception/_data/dump-db-dependent.$DATA.sql
+if [ -f $PROJECT_BASEPATH/dna/tests/codeception/_tmp/dump-db-dependent.$DATA.sql ]; then
+    mysql --no-auto-rehash --host=$DATABASE_HOST --port=$DATABASE_PORT --user=$DATABASE_USER --password=$DATABASE_PASSWORD $DATABASE_NAME < $PROJECT_BASEPATH/dna/tests/codeception/_tmp/dump-db-dependent.$DATA.sql
 else
-    echo "Data dump codeception/_data/dump-db-dependent.$DATA.sql not found"
+    echo "Data dump codeception/_tmp/dump-db-dependent.$DATA.sql not found"
 fi

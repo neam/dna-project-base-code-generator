@@ -5,16 +5,17 @@
 
 class_name: DbDependentCodeGuy
 modules:
-    enabled: [Db, CodeHelper, Asserts]
+    enabled: [Db, Asserts]
     config:
         Db:
             dsn: mysql:host=%DATABASE_HOST%;port=%DATABASE_PORT%;dbname=%DATABASE_NAME%
             user: %DATABASE_USER%
             password: %DATABASE_PASSWORD%
-            populate: true
-            cleanup: true
+            populate: true # run populator before all tests
+            cleanup: true # run populator before each test
+            populator: 'pv $dump | mysql --no-auto-rehash --host=$host --port=$port --user=$user --password=$password $dbname'
             reconnect: true
-            dump: ./codeception/_data/dump-db-dependent.%DATA%.sql
+            dump: ./codeception/_tmp/dump-db-dependent.%DATA%.sql
 gherkin:
     contexts:
         default:

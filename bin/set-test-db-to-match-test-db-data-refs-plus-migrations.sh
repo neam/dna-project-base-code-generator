@@ -22,7 +22,9 @@ cd $PROJECT_BASEPATH
 source vendor/neam/php-app-config/shell-export.sh
 cd -
 
+# set the value of the test db to correspond to the current data refs/dumps + migrations
 time $PROJECT_BASEPATH/bin/reset-db.sh;
-time test_console mysqldump --dumpPath=dna/tests/codeception/_data/ --dumpFile=dump-db-dependent.$DATA.sql
-sed -i -e 's/\/\*!50013 DEFINER=`[^`]*`@`[^`]*` SQL SECURITY DEFINER \*\///' $PROJECT_BASEPATH/dna/tests/codeception/_data/dump-db-dependent.$DATA.sql
-echo "* Codeception is set to reload the profile $DATA between tests (codeception/_data/dump-db-dependent.$DATA.sql)."
+mysqldump --user="$DATABASE_USER" --password="$DATABASE_PASSWORD" --host="$DATABASE_HOST" --port="$DATABASE_PORT" --skip-triggers --no-create-db $IGNORED_TABLES_STRING $DATABASE_NAME \
+| pv > $PROJECT_BASEPATH/dna/tests/codeception/_tmp/dump-db-dependent.$DATA.sql
+sed -i -e 's/\/\*!50013 DEFINER=`[^`]*`@`[^`]*` SQL SECURITY DEFINER \*\///' $PROJECT_BASEPATH/dna/tests/codeception/_tmp/dump-db-dependent.$DATA.sql
+echo "* Codeception is set to reload the profile $DATA between tests (codeception/_tmp/dump-db-dependent.$DATA.sql)."

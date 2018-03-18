@@ -5,7 +5,7 @@
 
 class_name: DbAgnosticCodeGuy
 modules:
-    enabled: [CodeHelper]
+    enabled: [Asserts]
 gherkin:
     contexts:
         default:

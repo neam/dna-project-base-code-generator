@@ -50,9 +50,9 @@ fi
 
 if [ "$RESET_DB" == 1 ]; then
   time $PROJECT_BASEPATH/bin/reset-db.sh;
-  time test_console mysqldump --dumpPath=dna/tests/codeception/_data/ --dumpFile=dump-db-dependent.$DATA.sql
-  sed -i -e 's/\/\*!50013 DEFINER=`[^`]*`@`[^`]*` SQL SECURITY DEFINER \*\///' $PROJECT_BASEPATH/dna/tests/codeception/_data/dump-db-dependent.$DATA.sql
-  echo "* Codeception is set to reload the profile $DATA between tests (codeception/_data/dump-db-dependent.$DATA.sql). Run following test rounds with the --skip-reset-db flag to skip this initialization";
+  time test_console mysqldump --dumpPath=dna/tests/codeception/_tmp/ --dumpFile=dump-db-dependent.$DATA.sql
+  sed -i -e 's/\/\*!50013 DEFINER=`[^`]*`@`[^`]*` SQL SECURITY DEFINER \*\///' $PROJECT_BASEPATH/dna/tests/codeception/_tmp/dump-db-dependent.$DATA.sql
+  echo "* Codeception is set to reload the profile $DATA between tests (codeception/_tmp/dump-db-dependent.$DATA.sql). Run following test rounds with the --skip-reset-db flag to skip this initialization";
 fi
 
 echo "time codecept run unit_db_dependent $CODECEPTION_GROUP_ARGS --debug $CLI_ARGS"
